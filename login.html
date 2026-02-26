@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Multiple Disease Prediction using Machine Learning</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { font-family: Arial, sans-serif; background: linear-gradient(135deg,#f0f7ff,#e6f0ff); margin:0; padding:0;}
+        .header { display:flex; justify-content:space-between; align-items:center; padding:12px 24px; background:linear-gradient(90deg,#0ea5e9,#3b82f6); color:#fff;}
+        .logo { font-weight:700; font-size:20px;}
+        .top-menu a, .top-menu button { background:rgba(255,255,255,0.15); color:#fff; border:none; border-radius:6px; margin-left:8px; padding:6px 10px; text-decoration:none; font-weight:600; cursor:pointer; }
+        .main-content { display:flex; gap:40px; padding:40px 30px;}
+        .project-about { flex:2; }
+        .login-form { flex:1; background:#fff; border-radius:12px; box-shadow:0 6px 18px rgba(20,40,80,0.06); padding:25px 22px; }
+        .admin-access { margin-top:16px; }
+        .admin-access a { color:#0ea5e9; font-weight:600; text-decoration:none; }
+        .footer { margin-top:40px; text-align:center; color:#888; font-size:14px;}
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">MDP</div>
+        <div class="top-menu">
+            <a class="btn" href="{{ url_for('admin_login') }}">Admin</a>
+            
+            
+            <a href="#" onclick="showContact();return false;">Contact Us</a>
+
+        </div>
+    </div>
+    <div class="main-content">
+        <div class="project-about">
+            <h2>Multiple Disease Prediction using Machine Learning</h2>
+            <h3>About</h3>
+            <p>This web application is a comprehensive health prediction system built using Flask and machine learning models. It allows users to input important health parameters through a single integrated form.</p> <br>
+            <p>This application predicts the likelihood of several diseases—heart disease, diabetes, and Parkinson’s disease—based on the submitted parameters. For each prediction, the system not only provides a diagnosis result but also a confidence score indicating the reliability of the prediction. This helps users and healthcare professionals make informed decisions efficiently. The application integrates multiple machine learning models and presents results in an intuitive web interface, making it user-friendly and informative. It aims at early detection and prevention by leveraging accessible health data, thus contributing to better healthcare outcomes.</p>
+            
+            
+        </div>
+        <div class="login-form">
+            <h3>User Login</h3>
+            <form method="post" action="{{ url_for('login') }}">
+                <label>Username</label>
+                <input name="username" required>
+                <label>Password</label>
+                <input name="password" type="password" required>
+                <button type="submit">Login</button>
+            </form>
+            <div style="margin-top:12px;">
+                <a href="{{ url_for('signup') }}">Sign Up</a> | 
+                <a href="{{ url_for('forgot') }}">Forgot?</a>
+            </div>
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    <ul class="flashes">
+                    {% for category,msg in messages %}
+                        <li class="flash-{{category}}">{{ msg }}</li>
+                    {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endwith %}
+        </div>
+    </div>
+    <script>
+function showContact() {
+    alert("dramya885@gmail.com\nPhone: 6360677285\npreethiraj241@gmail.com\nPhone: 8951307665");
+}
+</script>
+
+</body>
+</html>
